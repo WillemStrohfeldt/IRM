@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap" rel="stylesheet"><style>
+body{margin:0;background:#f0eee9;font-family:system-ui,sans-serif}
+a{color:#2a78d6}a:hover{color:#1b5aa6}
+.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}
+.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 system-ui,sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}
+.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 system-ui,sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:22px 0 0;font:12px/1.5 system-ui,sans-serif;color:rgba(0,0,0,.5)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.s{width:440px;background:#fff;border:1.5px solid #1a1a1a;border-radius:7px;overflow:hidden}
+.s.w{width:640px}
+.bar{display:flex;align-items:center;gap:8px;padding:8px 11px;border-bottom:1.5px solid #1a1a1a;background:#f7f5f1;font:700 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.04em}
+.pane{padding:12px}
+.h{margin:0;font:700 17px/1.2 Kalam,cursive}
+.h2{margin:0;font:700 13px/1.2 Kalam,cursive}
+.lbl{font:9.5px/1.3 ui-monospace,Menlo,monospace;color:#6b6b6b;letter-spacing:.07em;text-transform:uppercase}
+.mono{font:10.5px/1.45 ui-monospace,Menlo,monospace;color:#1a1a1a}
+.dim{color:#7a7a7a}
+.amber{color:#b45309}
+.tile{border:1.5px solid #1a1a1a;border-radius:6px;padding:9px 10px;display:flex;flex-direction:column;gap:4px}
+.big{font:700 24px/1 Kalam,cursive}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.chip{border:1px solid #9a9a9a;border-radius:999px;padding:2px 8px;font:10px/1.4 ui-monospace,Menlo,monospace;color:#3a3a3a}
+.li{display:flex;flex-direction:column;gap:3px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.28)}
+.step{border:1.5px solid #1a1a1a;border-radius:5px;padding:5px 4px;text-align:center;font:700 9.5px/1.2 ui-monospace,Menlo,monospace}
+.step.done{background:#1a1a1a;color:#fff}
+.step.now{background:#dbeafe;border-color:#2a78d6;color:#1b4d8a}
+.stepgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.searchbox{border:1.5px solid #1a1a1a;border-radius:5px;padding:7px 9px;font:11px/1.2 ui-monospace,Menlo,monospace;color:#8a8a8a}
+.col{border:1.5px dashed #9a9a9a;border-radius:6px;padding:7px;display:flex;flex-direction:column;gap:6px;background:#faf9f6}
+.kb{border:1.5px solid #1a1a1a;border-radius:5px;background:#fff;padding:6px 7px;display:flex;flex-direction:column;gap:3px}
+.split{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid #1a1a1a}
+.split>div{padding:11px}
+.split>div+div{border-left:1.5px solid #1a1a1a;background:#faf9f6}
+.tree{display:flex;flex-direction:column;gap:5px}
+.tr{display:flex;gap:6px;align-items:baseline}
+.nest{margin-left:16px;border-left:1px dashed #9a9a9a;padding-left:9px;display:flex;flex-direction:column;gap:5px}
+.th{display:grid;grid-template-columns:64px 1fr 70px 52px;gap:6px;padding:6px 0;border-bottom:1.5px solid #1a1a1a}
+.td{display:grid;grid-template-columns:64px 1fr 70px 52px;gap:6px;padding:7px 0;border-bottom:1px dashed rgba(0,0,0,.28);align-items:center}
+.td .pcell{display:flex;flex-direction:column;gap:3px}
+.pbar{display:block;width:100%;height:7px;border:1.5px solid #1a1a1a;border-radius:4px;overflow:hidden;background:#fff}
+.pbar>i{display:block;height:100%;background:#1a1a1a}
+.note{font:italic 10.5px/1.4 Kalam,cursive;color:#6b6b6b}
+</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Three structures for Z3 → Z5 resolution management</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>KPI console — health metrics are the front door, each tile drills into a filtered list</div>
+<div class="dv-card">
+<div class="stack" style="padding:16px;background:#f0eee9">
+
+<div class="s">
+<div class="bar"><span>Z5 DASHBOARD</span><span class="dim" style="margin-left:auto;font-weight:400">my areas ▾</span></div>
+<div class="pane" style="display:flex;flex-direction:column;gap:11px">
+<div class="searchbox">⌕ search Z3 id, Z5 id, tool, symptom…</div>
+<div class="grid3">
+<div class="tile"><span class="lbl">open Z5s</span><span class="big">41</span></div>
+<div class="tile" style="border-color:#b45309"><span class="lbl amber">follow-up overdue</span><span class="big amber">7</span></div>
+<div class="tile" style="border-color:#b45309"><span class="lbl amber">past avail. date</span><span class="big amber">3</span></div>
+</div>
+<div class="grid2">
+<div class="tile"><span class="lbl">no eng. owner</span><span class="big">5</span><span class="mono dim">unassigned &gt; 14 days</span></div>
+<div class="tile"><span class="lbl">workstreams overdue</span><span class="big">12</span><span class="mono dim">across 9 Z5s</span></div>
+</div>
+<div>
+<span class="lbl">open Z5s by workstream</span>
+<div class="stepgrid" style="margin-top:6px">
+<div class="step">P<br>4</div><div class="step">C<br>6</div><div class="step">C<br>11</div><div class="step">S<br>9</div><div class="step">I<br>7</div><div class="step">M<br>4</div>
+</div>
+</div>
+<p class="note" style="margin:0">Tap any number → the Z5 list, pre-filtered to it.</p>
+</div>
+</div>
+
+<div class="s">
+<div class="bar"><span>◂ Z5 LIST — filter: follow-up overdue (7)</span></div>
+<div class="pane">
+<div class="th mono" style="color:#6b6b6b"><span>Z5</span><span>TITLE / MECHANISM</span><span>WORKSTREAM</span><span>DUE</span></div>
+<div class="td mono"><span>Z5-118</span><span>Overlay drift, litho cell B<br><span class="dim">suspected: reticle heating</span></span><span>Cause</span><span class="amber">−9d</span></div>
+<div class="td mono"><span>Z5-104</span><span>Edge-die particle cluster<br><span class="dim">suspected: chuck contamination</span></span><span>Solution</span><span class="amber">−4d</span></div>
+<div class="td mono"><span>Z5-131</span><span>CD loss on variant -N4P<br><span class="dim">suspected: etch recipe</span></span><span>Containment</span><span class="amber">−2d</span></div>
+<div class="td mono dim"><span>Z5-097</span><span>Wafer-edge defect recurrence</span><span>Monitor</span><span>+6d</span></div>
+</div>
+</div>
+
+<div class="s">
+<div class="bar"><span>Z5-118</span><span class="dim" style="font-weight:400">· 14 linked Z3s · owner: unassigned</span></div>
+<div class="pane" style="display:flex;flex-direction:column;gap:11px">
+<h3 class="h">Overlay drift in litho cell B</h3>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">-N4</span><span class="chip">-N4P</span><span class="chip">-N4X</span><span class="chip">avail. 12 Nov</span></div>
+<div>
+<span class="lbl">PCCSIM — sequential</span>
+<div class="stepgrid" style="margin-top:6px">
+<div class="step done">PROB</div><div class="step done">CONT</div><div class="step now">CAUSE</div><div class="step">SOL</div><div class="step">IMPL</div><div class="step">MON</div>
+</div>
+</div>
+<div class="li"><span class="lbl">cause — open, 9 days overdue</span><span class="mono">owner: —  ·  DOE running on cell B reticle stage</span></div>
+<div class="li"><span class="lbl">linked Z3s (14)</span><span class="mono">Z3-24412 · Z3-24418 · Z3-24501 <span class="dim">+11</span></span></div>
+<p class="note" style="margin:0">Detail is one scrolling page; workstreams expand in place.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Workstream board — Z5s move across the six PCCSIM columns; KPIs shrink to a status strip</div>
+<div class="dv-card">
+<div class="stack" style="padding:16px;background:#f0eee9">
+
+<div class="s w">
+<div class="bar"><span>PCCSIM BOARD</span><span class="dim" style="margin-left:auto;font-weight:400">⌕ search · group: workstream ▾</span></div>
+<div class="pane" style="display:flex;flex-direction:column;gap:10px">
+<div class="mono" style="display:flex;gap:14px;flex-wrap:wrap;border:1.5px solid #1a1a1a;border-radius:5px;padding:7px 9px">
+<span>41 open</span><span class="amber">7 follow-up overdue</span><span class="amber">3 past avail.</span><span>5 no owner</span><span>12 w/s overdue</span>
+</div>
+<div class="grid3" style="grid-template-columns:repeat(6,1fr);align-items:start">
+<div class="col"><span class="lbl">Problem 4</span>
+<div class="kb"><span class="mono">Z5-142</span><span class="mono dim">particle, -N4</span></div>
+<div class="kb"><span class="mono">Z5-145</span><span class="mono dim">no owner</span></div></div>
+<div class="col"><span class="lbl">Contain 6</span>
+<div class="kb" style="border-color:#b45309"><span class="mono">Z5-131</span><span class="mono amber">−2d</span></div>
+<div class="kb"><span class="mono">Z5-139</span><span class="mono dim">3 Z3s</span></div></div>
+<div class="col"><span class="lbl">Cause 11</span>
+<div class="kb" style="border-color:#b45309"><span class="mono">Z5-118</span><span class="mono amber">−9d · no owner</span></div>
+<div class="kb"><span class="mono">Z5-126</span><span class="mono dim">14 Z3s</span></div>
+<div class="kb"><span class="mono">Z5-129</span></div></div>
+<div class="col"><span class="lbl">Solution 9</span>
+<div class="kb" style="border-color:#b45309"><span class="mono">Z5-104</span><span class="mono amber">−4d</span></div>
+<div class="kb"><span class="mono">Z5-111</span></div></div>
+<div class="col"><span class="lbl">Implement 7</span>
+<div class="kb"><span class="mono">Z5-088</span><span class="mono dim">avail 12 Nov</span></div></div>
+<div class="col"><span class="lbl">Monitor 4</span>
+<div class="kb"><span class="mono">Z5-097</span><span class="mono dim">+6d</span></div></div>
+</div>
+<p class="note" style="margin:0">Column = the workstream a Z5 is currently in. Cards can't skip columns.</p>
+</div>
+</div>
+
+<div class="s">
+<div class="bar"><span>Z5-118 · CAUSE</span><span class="dim" style="margin-left:auto;font-weight:400">◂ ▸ next Z5</span></div>
+<div class="pane" style="display:flex;flex-direction:column;gap:10px">
+<h3 class="h">Overlay drift in litho cell B</h3>
+<div class="li"><span class="lbl">Problem — closed 04 Sep</span><span class="mono dim">14 Z3s bucketed · signature: overlay X-drift &gt; 3nm</span></div>
+<div class="li"><span class="lbl">Containment — closed 11 Sep</span><span class="mono dim">cell B held for -N4P; 100% overlay metrology</span></div>
+<div class="li" style="border-color:#b45309"><span class="lbl amber">Cause — open, 9d overdue</span><span class="mono">owner: — · hypothesis: reticle heating</span></div>
+<div class="li"><span class="lbl dim">Solution — blocked by Cause</span><span class="mono dim">—</span></div>
+<div class="li"><span class="lbl dim">Implement · Monitor</span><span class="mono dim">not started</span></div>
+</div>
+</div>
+
+<div class="s">
+<div class="bar"><span>LINKED Z3s — Z5-118</span></div>
+<div class="pane">
+<div class="tree">
+<div class="tr"><span class="mono">Z3-24412</span><span class="mono dim">-N4P · litho B · overlay 3.4nm · parent</span></div>
+<div class="nest">
+<div class="tr"><span class="mono">Z3-24418</span><span class="mono dim">duplicate · open</span></div>
+<div class="tr"><span class="mono">Z3-24501</span><span class="mono dim">duplicate · open</span></div>
+</div>
+<div class="tr"><span class="mono">Z3-24560</span><span class="mono dim">-N4X · litho B · overlay 2.9nm</span></div>
+<div class="tr dim"><span class="mono">+10 more</span></div>
+</div>
+<p class="note" style="margin:10px 0 0">Duplicates stay open, nested under their parent Z3.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Search-first table — one dense Z5 register with saved views; detail opens beside the list</div>
+<div class="dv-card">
+<div class="stack" style="padding:16px;background:#f0eee9">
+
+<div class="s w">
+<div class="bar"><span>REGISTER</span><span class="dim" style="margin-left:auto;font-weight:400">Z3s · Z5s · tools · variants</span></div>
+<div class="pane" style="display:flex;flex-direction:column;gap:10px">
+<div class="searchbox" style="font-size:12px">⌕ overlay drift litho B</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap"><span class="chip">Z5s 6</span><span class="chip">Z3s 41</span><span class="chip">saved: my overdue</span><span class="chip">saved: no owner</span><span class="chip">saved: past avail.</span></div>
+<div class="grid2" style="gap:12px">
+<div>
+<span class="lbl">Z5 matches</span>
+<div class="li"><span class="mono">Z5-118 · Overlay drift, litho cell B</span><span class="mono amber">Cause −9d · no owner · 14 Z3s</span></div>
+<div class="li"><span class="mono">Z5-126 · Stage vibration, cell B</span><span class="mono dim">Cause · 6 Z3s</span></div>
+</div>
+<div>
+<span class="lbl">Z3 matches</span>
+<div class="li"><span class="mono">Z3-24412 · -N4P · 04 Sep</span><span class="mono dim">→ Z5-118</span></div>
+<div class="li"><span class="mono">Z3-24603 · -N4 · 19 Sep</span><span class="mono amber">unlinked → suggest Z5-118</span></div>
+</div>
+</div>
+<p class="note" style="margin:0">One search box spans both record types; unlinked Z3s surface with a suggested Z5.</p>
+</div>
+</div>
+
+<div class="s w">
+<div class="bar"><span>Z5 REGISTER · 41 open</span><span class="dim" style="margin-left:auto;font-weight:400">sort: risk ▾  columns ▾</span></div>
+<div class="pane">
+<div class="th mono" style="grid-template-columns:58px 1fr 120px 62px 46px;color:#6b6b6b"><span>Z5</span><span>TITLE</span><span>PCCSIM</span><span>AVAIL</span><span>Z3s</span></div>
+<div class="td mono" style="grid-template-columns:58px 1fr 120px 62px 46px"><span>118</span><span>Overlay drift, litho B</span><span class="pcell"><span class="pbar"><i style="width:40%"></i></span><span class="amber">cause −9d</span></span><span>12 Nov</span><span>14</span></div>
+<div class="td mono" style="grid-template-columns:58px 1fr 120px 62px 46px"><span>104</span><span>Edge-die particle cluster</span><span class="pcell"><span class="pbar"><i style="width:60%"></i></span><span class="amber">sol −4d</span></span><span class="amber">02 Oct</span><span>9</span></div>
+<div class="td mono" style="grid-template-columns:58px 1fr 120px 62px 46px"><span>131</span><span>CD loss on -N4P</span><span class="pcell"><span class="pbar"><i style="width:25%"></i></span><span>contain</span></span><span>28 Nov</span><span>5</span></div>
+<div class="td mono" style="grid-template-columns:58px 1fr 120px 62px 46px"><span>097</span><span>Wafer-edge defect recurrence</span><span class="pcell"><span class="pbar"><i style="width:92%"></i></span><span>monitor</span></span><span>—</span><span>21</span></div>
+</div>
+</div>
+
+<div class="s w">
+<div class="bar"><span>Z5-118 — detail beside list</span></div>
+<div class="split">
+<div style="display:flex;flex-direction:column;gap:9px">
+<h3 class="h2">Overlay drift in litho cell B</h3>
+<div class="mono dim">owner: — · opened 04 Sep · avail. 12 Nov</div>
+<div class="stepgrid" style="grid-template-columns:repeat(3,1fr)">
+<div class="step done">PROB</div><div class="step done">CONT</div><div class="step now">CAUSE</div>
+<div class="step">SOL</div><div class="step">IMPL</div><div class="step">MON</div>
+</div>
+<div class="li"><span class="lbl">suspected mechanism</span><span class="mono">reticle heating → X-drift</span></div>
+<div class="li"><span class="lbl">affected variants</span><span class="mono">-N4 · -N4P · -N4X</span></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<span class="lbl">linked Z3s (14)</span>
+<div class="tree">
+<div class="tr"><span class="mono">24412</span><span class="mono dim">parent</span></div>
+<div class="nest"><div class="tr"><span class="mono">24418</span><span class="mono dim">dup, open</span></div><div class="tr"><span class="mono">24501</span><span class="mono dim">dup, open</span></div></div>
+<div class="tr"><span class="mono">24560</span><span class="mono dim">-N4X</span></div>
+<div class="tr dim"><span class="mono">+10</span></div>
+</div>
+<div class="li" style="border-color:#2a78d6"><span class="lbl">candidate</span><span class="mono">Z3-24603 — link? <span class="dim">92% signature match</span></span></div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "field names are wrong, here are the real ones" · "take <a class="dv-oid" href="#1b">1b</a>'s board with <a class="dv-oid" href="#1c">1c</a>'s search" · "add the unlinked-Z3 queue and linking flow"</p>
+</section>
+
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="stylesheet" href="_ds/industry-c30c53d8-54fa-4e59-b523-7f5958b16435/styles.css"><script src="_ds/industry-c30c53d8-54fa-4e59-b523-7f5958b16435/_ds_bundle.js"></script><style>
+body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+a{color:var(--color-accent)}a:hover{color:var(--color-accent-700)}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid var(--color-divider);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 24px}
+.dv-tid{font:var(--font-heading-weight) 11px/1 var(--font-heading);letter-spacing:.08em;padding:4px 8px;background:var(--color-accent-900);color:var(--color-bg);text-decoration:none}
+.dv-tname{font:var(--font-heading-weight) 15px/1.2 var(--font-heading)}
+.dv-opts{display:flex;flex-wrap:wrap;gap:36px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:12px;scroll-margin-top:16px}
+.dv-oid{font:var(--font-heading-weight) 11px/1 var(--font-heading);letter-spacing:.08em;padding:4px 8px;border:1px solid var(--color-accent);color:var(--color-accent);text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:10px;font-size:12px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 60%,transparent);max-width:680px}
+.dv-opt:target .dv-oid{background:var(--color-accent);color:var(--color-bg)}
+.dv-next{margin:26px 0 0;font-size:12.5px;color:color-mix(in srgb,var(--color-text) 55%,transparent)}
+.stack{display:flex;flex-direction:column;gap:28px}
+.s{width:470px;background:var(--color-bg)}
+.s.w{width:700px}
+.bar{display:flex;align-items:center;gap:10px;padding:9px 13px;border-bottom:1px solid var(--color-divider);font:var(--font-heading-weight) 12px/1 var(--font-heading);letter-spacing:.1em;text-transform:uppercase}
+.bar .sub{margin-left:auto;font-family:var(--font-body);font-size:12px;letter-spacing:0;text-transform:none;color:color-mix(in srgb,var(--color-text) 55%,transparent)}
+.pane{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3)}
+.lbl{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 55%,transparent)}
+.lbl.acc{color:var(--color-accent-700)}
+.mono{font-size:12.5px;line-height:1.5;font-variant-numeric:tabular-nums}
+.dim{color:color-mix(in srgb,var(--color-text) 55%,transparent)}
+.hot{color:var(--color-accent-800);font-weight:500}
+.tile{border:1px solid var(--color-divider);padding:var(--space-3);display:flex;flex-direction:column;gap:2px}
+.tile.on{border-color:var(--color-accent)}
+.big{font:var(--font-heading-weight) 30px/1 var(--font-heading);font-variant-numeric:tabular-nums}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-2)}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-2)}
+.step{border:1px solid var(--color-divider);padding:7px 4px;text-align:center;font:var(--font-heading-weight) 10px/1.3 var(--font-heading);letter-spacing:.06em}
+.step.done{background:var(--color-accent-900);color:var(--color-bg);border-color:var(--color-accent-900)}
+.step.now{border-color:var(--color-accent);background:var(--color-accent-100);color:var(--color-accent-800)}
+.li{display:flex;flex-direction:column;gap:3px;padding:var(--space-2) 0;border-bottom:1px solid color-mix(in srgb,var(--color-text) 8%,transparent)}
+.li.on{border-bottom-color:var(--color-accent)}
+.search{display:flex;align-items:center;gap:8px;min-height:36px;padding:6px 10px;background:var(--color-surface);border:1px solid var(--color-divider);font-size:13px;color:color-mix(in srgb,var(--color-text) 50%,transparent)}
+.col{border:1px solid var(--color-divider);padding:var(--space-2);display:flex;flex-direction:column;gap:var(--space-2)}
+.kb{border:1px solid var(--color-divider);padding:7px 8px;display:flex;flex-direction:column;gap:2px}
+.kb.on{border-color:var(--color-accent)}
+.split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--color-divider)}
+.split>div{padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)}
+.split>div+div{border-left:1px solid var(--color-divider)}
+.tree{display:flex;flex-direction:column;gap:6px}
+.tr{display:flex;gap:8px;align-items:baseline}
+.nest{margin-left:14px;border-left:1px solid var(--color-divider);padding-left:12px;display:flex;flex-direction:column;gap:6px}
+.pbar{display:block;width:100%;height:6px;border:1px solid var(--color-divider);background:var(--color-bg)}
+.pbar>i{display:block;height:100%;background:var(--color-accent)}
+.pcell{display:flex;flex-direction:column;gap:4px}
+.note{margin:0;font-size:11.5px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 50%,transparent)}
+.ttl{margin:0;font:var(--font-heading-weight) 22px/1.15 var(--font-heading)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+table.table td,table.table th{padding:7px var(--space-2);vertical-align:top}
+.spark{display:flex;align-items:flex-end;gap:3px;height:44px}
+.spark>i{display:block;flex:1;background:var(--color-accent-300);border-top:1px solid var(--color-accent-700)}
+.imp{display:inline-flex;align-items:center;justify-content:center;min-width:22px;padding:1px 5px;border:1px solid var(--color-divider);font-size:11px;font-variant-numeric:tabular-nums}
+.imp.hi{border-color:var(--color-accent-800);background:var(--color-accent-100);color:var(--color-accent-800)}
+</style></helmet>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">Rebuilt on Industry, with your real fields and lifecycles</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>KPI console — the IRM board is the front door; every figure drills into a filtered Z5 list. Evolves <a class="dv-oid" href="#1a">1a</a>.</div>
+<div>
+<div class="stack">
+
+<div class="s blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>IRM Board</span><span class="sub">all families ▾ · week 37</span></div>
+<div class="pane">
+<div class="search"><span>⌕</span><span>Z5 no., Z3 no., failure code, product…</span></div>
+<div class="g3">
+<div class="tile"><span class="lbl">open Z5s</span><span class="big">41</span><span class="mono dim">new 6 · ongoing 29 · triage 6</span></div>
+<div class="tile on"><span class="lbl acc">follow-up overdue</span><span class="big hot">7</span><span class="mono dim">no update past due date</span></div>
+<div class="tile on"><span class="lbl acc">past committed avail.</span><span class="big hot">3</span><span class="mono dim">date missed, not done</span></div>
+</div>
+<div class="g2">
+<div class="tile"><span class="lbl">no engineering owner</span><span class="big">5</span></div>
+<div class="tile"><span class="lbl">PCCSIM workstreams overdue</span><span class="big">12</span><span class="mono dim">across 9 Z5s</span></div>
+</div>
+<div>
+<span class="lbl">open Z5s by current workstream</span>
+<div class="g6" style="margin-top:var(--space-2)">
+<div class="step">P<br>4</div><div class="step">C<br>6</div><div class="step">C<br>11</div><div class="step">S<br>9</div><div class="step">I<br>7</div><div class="step">M<br>4</div>
+</div>
+</div>
+<div>
+<span class="lbl">Z3 intake per week · dry vs wet</span>
+<div class="spark" style="margin-top:var(--space-2)"><i style="height:40%"></i><i style="height:55%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:62%"></i><i style="height:88%"></i><i style="height:74%"></i><i style="height:96%"></i></div>
+</div>
+<p class="note">Every figure links into the Z5 list, pre-filtered. On-time updating is the board's whole purpose.</p>
+</div>
+</div>
+
+<div class="s w blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>◂ Z5 Overview — follow-up overdue (7)</span><span class="sub">Z5 no. leading, product secondary</span></div>
+<div class="pane">
+<table class="table">
+<thead><tr><th>Z5</th><th>Title</th><th>Status</th><th>Workstream</th><th>Eng. owner</th><th>Follow-up</th></tr></thead>
+<tbody>
+<tr><td class="mono">118</td><td class="mono">Overlay drift, litho cell B<br><span class="dim">DRY 1.0 · DRY 0.7 · WET 1.0</span></td><td class="mono">Ongoing</td><td class="mono">Cause</td><td class="mono hot">—</td><td class="mono hot">−9d</td></tr>
+<tr><td class="mono">104</td><td class="mono">Edge-die particle cluster<br><span class="dim">WET 1.0 · WET 0.8</span></td><td class="mono">Ongoing</td><td class="mono">Solution</td><td class="mono">J. Meijer</td><td class="mono hot">−4d</td></tr>
+<tr><td class="mono">131</td><td class="mono">CD loss after recipe change<br><span class="dim">DRY 0.7</span></td><td class="mono">Ongoing</td><td class="mono">Containment</td><td class="mono">A. Roth</td><td class="mono hot">−2d</td></tr>
+<tr><td class="mono">145</td><td class="mono">Chamber pressure excursion<br><span class="dim">WET 0.8</span></td><td class="mono">New</td><td class="mono dim">—</td><td class="mono hot">—</td><td class="mono hot">−1d</td></tr>
+<tr><td class="mono dim">097</td><td class="mono dim">Wafer-edge defect recurrence<br><span class="dim">DRY 1.0</span></td><td class="mono dim">Ongoing</td><td class="mono dim">Monitor</td><td class="mono dim">P. Sandu</td><td class="mono dim">+6d</td></tr>
+</tbody>
+</table>
+<div class="chips"><span class="tag tag-neutral">saved: my Z5s</span><span class="tag tag-neutral">no eng. owner</span><span class="tag tag-neutral">past avail.</span><span class="tag tag-neutral">triage queue</span></div>
+</div>
+</div>
+
+<div class="s blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>Z5-118</span><span class="sub">ongoing · 14 linked Z3s</span></div>
+<div class="pane">
+<h3 class="ttl">Overlay drift in litho cell B</h3>
+<div class="chips"><span class="tag tag-accent">DRY 1.0</span><span class="tag tag-accent">DRY 0.7</span><span class="tag tag-accent">WET 1.0</span></div>
+<div class="g2">
+<div class="li"><span class="lbl">project lead</span><span class="mono">M. Devries</span></div>
+<div class="li on"><span class="lbl acc">engineering owner</span><span class="mono hot">unassigned</span></div>
+<div class="li"><span class="lbl">committed availability</span><span class="mono">12 Nov</span></div>
+<div class="li on"><span class="lbl acc">next follow-up</span><span class="mono hot">28 Aug · 9d overdue</span></div>
+</div>
+<div>
+<span class="lbl">PCCSIM — sequential workstreams</span>
+<div class="g6" style="margin-top:var(--space-2)">
+<div class="step done">Prob</div><div class="step done">Cont</div><div class="step now">Cause</div><div class="step">Sol</div><div class="step">Impl</div><div class="step">Mon</div>
+</div>
+</div>
+<div class="li on"><span class="lbl acc">cause — open, overdue</span><span class="mono">DOE running on cell B reticle stage; hypothesis reticle heating</span></div>
+<div class="li"><span class="lbl">linked Z3s — top impact</span><span class="mono"><span class="imp hi">8</span> Z3-24412 · <span class="imp hi">7</span> Z3-24560 · <span class="imp">4</span> Z3-24501 <span class="dim">+11</span></span></div>
+<div style="display:flex;gap:var(--space-2)">
+<button class="btn btn-primary blueprint" type="button"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Assign engineering owner</button>
+<button class="btn btn-secondary" type="button">Log update</button>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>PCCSIM board — Z5s sit in the column of their current workstream; triage is its own lane. Evolves <a class="dv-oid" href="#1b">1b</a>.</div>
+<div>
+<div class="stack">
+
+<div class="s w blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>PCCSIM Board</span><span class="sub">⌕ search · group: workstream ▾</span></div>
+<div class="pane">
+<div class="mono" style="display:flex;gap:var(--space-4);flex-wrap:wrap;border:1px solid var(--color-divider);padding:8px 11px">
+<span>41 open</span><span class="hot">7 follow-up overdue</span><span class="hot">3 past avail.</span><span>5 no eng. owner</span><span>12 w/s overdue</span>
+</div>
+<div class="g6" style="align-items:start">
+<div class="col"><span class="lbl">Problem 4</span>
+<div class="kb"><span class="mono">Z5-142</span><span class="mono dim">DRY 1.0</span></div>
+<div class="kb on"><span class="mono">Z5-145</span><span class="mono hot">no owner</span></div></div>
+<div class="col"><span class="lbl">Contain 6</span>
+<div class="kb on"><span class="mono">Z5-131</span><span class="mono hot">−2d</span></div>
+<div class="kb"><span class="mono">Z5-139</span><span class="mono dim">3 Z3s</span></div></div>
+<div class="col"><span class="lbl">Cause 11</span>
+<div class="kb on"><span class="mono">Z5-118</span><span class="mono hot">−9d · no owner</span></div>
+<div class="kb"><span class="mono">Z5-126</span><span class="mono dim">14 Z3s</span></div>
+<div class="kb"><span class="mono">Z5-129</span><span class="mono dim">WET 0.8</span></div></div>
+<div class="col"><span class="lbl">Solution 9</span>
+<div class="kb on"><span class="mono">Z5-104</span><span class="mono hot">−4d</span></div>
+<div class="kb"><span class="mono">Z5-111</span></div></div>
+<div class="col"><span class="lbl">Implement 7</span>
+<div class="kb"><span class="mono">Z5-088</span><span class="mono dim">avail 12 Nov</span></div></div>
+<div class="col"><span class="lbl">Monitor 4</span>
+<div class="kb"><span class="mono">Z5-097</span><span class="mono dim">+6d</span></div></div>
+</div>
+<div>
+<span class="lbl">before the board — triage</span>
+<div class="g3" style="margin-top:var(--space-2)">
+<div class="kb"><span class="mono">Z5-150 <span class="dim">new</span></span><span class="mono dim">accept · abort · merge</span></div>
+<div class="kb"><span class="mono">Z5-151 <span class="dim">investigate</span></span><span class="mono dim">similar to Z5-118?</span></div>
+<div class="kb"><span class="mono dim">Z5-149 aborted</span><span class="mono dim">closed in triage</span></div>
+</div>
+</div>
+<p class="note">A Z5 enters at triage (new → investigate → accepted, or aborted / merged into an existing Z5), then walks the six columns without skipping.</p>
+</div>
+</div>
+
+<div class="s blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>Z5-118 · Cause</span><span class="sub">◂ ▸ next Z5</span></div>
+<div class="pane">
+<h3 class="ttl">Overlay drift in litho cell B</h3>
+<div class="mono dim">lead M. Devries · eng. owner — · avail. 12 Nov · follow-up 28 Aug</div>
+<div class="li"><span class="lbl">Problem — closed 04 Sep</span><span class="mono dim">14 Z3s bucketed · failure codes FC-210, FC-214</span></div>
+<div class="li"><span class="lbl">Containment — closed 11 Sep</span><span class="mono dim">cell B held for DRY 0.7; 100% overlay metrology</span></div>
+<div class="li on"><span class="lbl acc">Cause — open, 9d overdue</span><span class="mono">hypothesis: reticle heating · DOE wk37</span></div>
+<div class="li"><span class="lbl">Solution — blocked by Cause</span><span class="mono dim">—</span></div>
+<div class="li"><span class="lbl">Implement · Monitor</span><span class="mono dim">not started</span></div>
+</div>
+</div>
+
+<div class="s blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>Linked Z3s — Z5-118</span><span class="sub">14 · 3 products</span></div>
+<div class="pane">
+<div class="tree">
+<div class="tr"><span class="imp hi">8</span><span class="mono">Z3-24412</span><span class="mono dim">DRY 1.0 · FC-214 · worked upon · parent</span></div>
+<div class="nest">
+<div class="tr"><span class="imp">3</span><span class="mono">Z3-24418</span><span class="mono dim">DRY 1.0 · duplicate · open</span></div>
+<div class="tr"><span class="imp">4</span><span class="mono">Z3-24501</span><span class="mono dim">DRY 0.7 · duplicate · open</span></div>
+</div>
+<div class="tr"><span class="imp hi">7</span><span class="mono">Z3-24560</span><span class="mono dim">WET 1.0 · FC-210 · new</span></div>
+<div class="tr"><span class="mono dim">+10 more</span></div>
+</div>
+<p class="note">Duplicates stay open, nested under their parent Z3. One Z5 spans products; the product is a column, not the identity.</p>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Search-first register — built for tens of thousands of Z3s; the linking workspace is the core screen. Evolves <a class="dv-oid" href="#1c">1c</a>.</div>
+<div>
+<div class="stack">
+
+<div class="s w blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>Register — search everything</span><span class="sub">Z3s · Z5s · failure codes · products</span></div>
+<div class="pane">
+<div class="search" style="font-size:14px"><span>⌕</span><span>FC-214 overlay dry 0.7</span></div>
+<div class="chips"><span class="tag tag-accent">Z5s 6</span><span class="tag tag-accent">Z3s 412</span><span class="tag tag-neutral">family: dry</span><span class="tag tag-neutral">impact ≥ 5</span><span class="tag tag-neutral">unlinked only</span><span class="tag tag-neutral">saved: my overdue</span></div>
+<div class="g2" style="gap:var(--space-6)">
+<div>
+<span class="lbl">Z5 matches</span>
+<div class="li"><span class="mono">Z5-118 · Overlay drift, litho cell B</span><span class="mono hot">Cause −9d · no eng. owner · 14 Z3s</span></div>
+<div class="li"><span class="mono">Z5-126 · Stage vibration, cell B</span><span class="mono dim">Cause · 6 Z3s · DRY 0.7</span></div>
+</div>
+<div>
+<span class="lbl">Z3 matches</span>
+<div class="li"><span class="mono">Z3-24412 · DRY 1.0 · FC-214 <span class="imp hi">8</span></span><span class="mono dim">linked → Z5-118</span></div>
+<div class="li"><span class="mono">Z3-24603 · DRY 0.7 · FC-214 <span class="imp">5</span></span><span class="mono hot">unlinked · 12d old</span></div>
+</div>
+</div>
+<p class="note">One query spans both record types. Filters are the navigation at this scale; lists are never browsed from the top.</p>
+</div>
+</div>
+
+<div class="s w blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>Z5 Register</span><span class="sub">41 open · sort: risk ▾ · columns ▾</span></div>
+<div class="pane">
+<table class="table">
+<thead><tr><th>Z5</th><th>Title</th><th>PCCSIM</th><th>Status</th><th>Avail.</th><th>Z3s</th></tr></thead>
+<tbody>
+<tr><td class="mono">118</td><td class="mono">Overlay drift, litho B</td><td><span class="pcell"><span class="pbar"><i style="width:40%"></i></span><span class="mono hot">cause −9d</span></span></td><td class="mono">Ongoing</td><td class="mono">12 Nov</td><td class="mono">14</td></tr>
+<tr><td class="mono">104</td><td class="mono">Edge-die particle cluster</td><td><span class="pcell"><span class="pbar"><i style="width:60%"></i></span><span class="mono hot">sol −4d</span></span></td><td class="mono">Ongoing</td><td class="mono hot">02 Oct</td><td class="mono">9</td></tr>
+<tr><td class="mono">131</td><td class="mono">CD loss after recipe change</td><td><span class="pcell"><span class="pbar"><i style="width:25%"></i></span><span class="mono">contain</span></span></td><td class="mono">Ongoing</td><td class="mono">28 Nov</td><td class="mono">5</td></tr>
+<tr><td class="mono">150</td><td class="mono">Chamber pressure excursion</td><td><span class="pcell"><span class="pbar"><i style="width:0%"></i></span><span class="mono dim">triage</span></span></td><td class="mono">New</td><td class="mono dim">—</td><td class="mono">2</td></tr>
+<tr><td class="mono dim">097</td><td class="mono dim">Wafer-edge defect recurrence</td><td><span class="pcell"><span class="pbar"><i style="width:92%"></i></span><span class="mono dim">monitor</span></span></td><td class="mono dim">Ongoing</td><td class="mono dim">—</td><td class="mono dim">21</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="s w blueprint"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+<div class="bar"><span>Linking workspace</span><span class="sub">unlinked Z3 queue · 318</span></div>
+<div class="split">
+<div>
+<span class="lbl">Z3-24603 — the Z3 in hand</span>
+<div class="li"><span class="lbl">product</span><span class="mono">DRY 0.7</span></div>
+<div class="li"><span class="lbl">failure code</span><span class="mono">FC-214 — overlay out of spec</span></div>
+<div class="li"><span class="lbl">impact score</span><span class="mono"><span class="imp">5</span> of 10</span></div>
+<div class="li"><span class="lbl">status</span><span class="mono">worked upon</span></div>
+<div class="li"><span class="lbl">operator description</span><span class="mono dim">"Third wafer in lot showed overlay error at the same field position after cell B reticle swap. Reworked, held remaining lot."</span></div>
+<div class="chips" style="margin-top:var(--space-2)"><span class="tag tag-neutral">◂ prev in queue</span><span class="tag tag-neutral">next ▸</span></div>
+</div>
+<div>
+<span class="lbl">Link to a Z5</span>
+<div class="search"><span>⌕</span><span>search Z5 by no., code, product…</span></div>
+<div class="li"><span class="mono">Z5-118 · Overlay drift, litho cell B</span><span class="mono dim">14 Z3s · FC-214, FC-210 · DRY 1.0, DRY 0.7</span></div>
+<div class="li"><span class="mono">Z5-126 · Stage vibration, cell B</span><span class="mono dim">6 Z3s · FC-214 · DRY 0.7</span></div>
+<div class="li"><span class="mono dim">Z5-088 · Reticle stage calibration</span><span class="mono dim">closed · monitor</span></div>
+<div style="display:flex;gap:var(--space-2);margin-top:var(--space-2);flex-wrap:wrap">
+<button class="btn btn-primary blueprint" type="button"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>Link to Z5-118</button>
+<button class="btn btn-secondary" type="button">Create new Z5</button>
+<button class="btn btn-secondary" type="button">Mark duplicate of Z3…</button>
+</div>
+<p class="note">Manual link, engineer's judgement. Filters on the left field values narrow the Z5 search; nothing is auto-bucketed.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: "go with <a class="dv-oid" href="#2c">2c</a>, make it clickable" · "put <a class="dv-oid" href="#2c">2c</a>'s linking workspace into <a class="dv-oid" href="#2a">2a</a>" · "add the Z3 detail screen and the trend view"</p>
+</section>
+
+</x-dc>
+</body>
+</html>
