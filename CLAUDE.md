@@ -77,7 +77,8 @@ fills. Primary button is the one solid accent object. Load `styles.css` AND
   tokens with real fields. Options: **2a** KPI console (metrics as front door),
   **2b** PCCSIM board (Z5s in workstream columns + triage lane),
   **2c** search-first register (filters as nav + linking workspace).
-- `IRM - Z5 Issue Resolution.dc.html` — the hi-fi UI mockup (current work).
+- `IRM - Z5 Issue Resolution.dc.html` — earlier hi-fi mockup (frozen).
+- `IRM - Z5 Issue Resolution - Brand palette.dc.html` — current mockup, brand palette, interactive.
 
 ## Current direction for the mockup
 
