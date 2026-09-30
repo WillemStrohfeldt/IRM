@@ -1,0 +1,20 @@
+[
+  {"id":"c-118-2-1","z5":118,"update":"seed-118-h2","author":"R. Aalders","at":"2026-09-09T10:15:00.000Z","text":"Thanks, clear. Can you add the measurement file to the note?"},
+  {"id":"c-118-2-2","z5":118,"update":"seed-118-h2","author":"M. Devries","at":"2026-09-09T14:40:00.000Z","text":"Will do — added to the next update."},
+  {"id":"c-104-7-1","z5":104,"update":"seed-104-h7","author":"S. Oyelaran","at":"2026-09-12T10:15:00.000Z","text":"Production can live with this until the end of the month, not longer."},
+  {"id":"c-104-4-1","z5":104,"update":"seed-104-h4","author":"S. Oyelaran","at":"2026-08-22T10:15:00.000Z","text":"Same signature seen on WET 1.0 last quarter; worth checking the old Z5."},
+  {"id":"c-104-4-2","z5":104,"update":"seed-104-h4","author":"J. Meijer","at":"2026-08-22T14:40:00.000Z","text":"Will do — added to the next update."},
+  {"id":"c-104-1-1","z5":104,"update":"seed-104-h1","author":"S. Oyelaran","at":"2026-08-01T10:15:00.000Z","text":"Thanks, clear. Can you add the measurement file to the note?"},
+  {"id":"c-131-1-1","z5":131,"update":"seed-131-h1","author":"J. Willems","at":"2026-09-20T10:15:00.000Z","text":"Please bring this to the next DRB so we can decide on the capacity."},
+  {"id":"c-126-3-1","z5":126,"update":"seed-126-h3","author":"J. Meijer","at":"2026-09-24T10:15:00.000Z","text":"Agreed. I will update the committed date once the supplier confirms."},
+  {"id":"c-126-0-1","z5":126,"update":"seed-126-h0","author":"K. Baars","at":"2026-09-03T10:15:00.000Z","text":"Production can live with this until the end of the month, not longer."},
+  {"id":"c-126-0-2","z5":126,"update":"seed-126-h0","author":"S. Oyelaran","at":"2026-09-03T14:40:00.000Z","text":"Will do — added to the next update."},
+  {"id":"c-97-8-1","z5":97,"update":"seed-97-h8","author":"P. Sandu","at":"2026-09-20T10:15:00.000Z","text":"Thanks, clear. Can you add the measurement file to the note?"},
+  {"id":"c-97-8-2","z5":97,"update":"seed-97-h8","author":"P. Sandu","at":"2026-09-20T14:40:00.000Z","text":"Will do — added to the next update."},
+  {"id":"c-97-5-1","z5":97,"update":"seed-97-h5","author":"R. Aalders","at":"2026-08-30T10:15:00.000Z","text":"Please bring this to the next DRB so we can decide on the capacity."},
+  {"id":"c-97-2-1","z5":97,"update":"seed-97-h2","author":"P. Sandu","at":"2026-08-09T10:15:00.000Z","text":"Agreed. I will update the committed date once the supplier confirms."},
+  {"id":"c-97-2-2","z5":97,"update":"seed-97-h2","author":"P. Sandu","at":"2026-08-09T14:40:00.000Z","text":"Will do — added to the next update."},
+  {"id":"c-88-2-1","z5":88,"update":"seed-88-h2","author":"R. Aalders","at":"2026-08-05T10:15:00.000Z","text":"Thanks, clear. Can you add the measurement file to the note?"},
+  {"id":"c-88-2-2","z5":88,"update":"seed-88-h2","author":"A. Roth","at":"2026-08-05T14:40:00.000Z","text":"Will do — added to the next update."},
+  {"id":"c-prov-1","z5":900000000000001,"update":"seed-prov-1","author":"K. Baars","at":"2026-09-29T15:20:00.000Z","text":"SAP number requested; I will match it as soon as it comes in."}
+]

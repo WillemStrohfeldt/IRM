@@ -1,4 +1,10 @@
-data/
+# The data tables are committed so the demo can be pulled onto another machine.
+# Machine-specific or temporary files in the data folder stay out:
+data/.lock
+data/_backup/
+data/*.tmp
+data/irm.json.converted-*
+
 storage/
 imports/processed/
 imports/incoming/

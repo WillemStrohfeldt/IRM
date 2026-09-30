@@ -1,0 +1,8 @@
+[
+  {"id":"r-118--36","z5":118,"date":"2026-08-25","type":"Triage decision","ws":"Problem","author":"Review board","text":"Accepted to work on. M. Devries named project lead; engineering owner left open pending capacity."},
+  {"id":"r-118--21","z5":118,"date":"2026-09-09","type":"DRB review","ws":"Cause","author":"R. Aalders","text":"Seen at DRB, no update given. Leg three waiting on the FTE request."},
+  {"id":"r-118--14","z5":118,"date":"2026-09-16","type":"Help request","ws":"Cause","author":"M. Devries","text":"1 FTE metrology engineer for six weeks to run DOE legs three and four."},
+  {"id":"r-104--7","z5":104,"date":"2026-09-23","type":"DRB review","ws":"Solution","author":"R. Aalders","text":"Guidance: split containment per product. Update still outstanding."},
+  {"id":"r-131--7","z5":131,"date":"2026-09-23","type":"DRB review","ws":"Containment","author":"R. Aalders","text":"Accepted etch recipe rollback."},
+  {"id":"r-145--6","z5":145,"date":"2026-09-24","type":"Triage decision","ws":"Problem","author":"K. Baars","text":"Opened as new; checked against Z5-104, distinct mechanism."}
+]

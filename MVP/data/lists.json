@@ -1,0 +1,56 @@
+{
+  "failureCodes": [
+    "Overlay out of spec",
+    "Field position error",
+    "Alignment mark unreadable",
+    "Particle contamination",
+    "CD out of spec",
+    "Chamber pressure excursion",
+    "Stage vibration",
+    "Edge defect",
+    "Focus error",
+    "Other"
+  ],
+  "products": [
+    "DRY 1.0",
+    "DRY 0.9",
+    "DRY 0.8",
+    "DRY 0.7",
+    "WET 1.0",
+    "WET 0.8",
+    "WET 2.4",
+    "WET 6.7"
+  ],
+  "productionSteps": [
+    "Litho A",
+    "Litho B",
+    "Etch 1",
+    "Etch 2",
+    "Deposition",
+    "Metrology",
+    "Clean",
+    "Final test"
+  ],
+  "milestones": [
+    "M0 Kit build",
+    "M1 Module integration",
+    "M2 System test",
+    "M3 Qualification",
+    "M4 Ship"
+  ],
+  "people": [
+    "M. Devries",
+    "K. Baars",
+    "P. Sandu",
+    "A. Roth",
+    "J. Meijer",
+    "S. Oyelaran",
+    "J. Willems"
+  ],
+  "priorities": [
+    "Low",
+    "Medium",
+    "High",
+    "Critical"
+  ]
+}

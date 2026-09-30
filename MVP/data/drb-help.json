@@ -1,0 +1,6 @@
+[
+  {"id":"h1","z5":118,"type":"FTE","status":"Decision needed","text":"1 FTE metrology engineer for six weeks to run DOE legs three and four.","by":"M. Devries","at":"2026-09-16T09:00:00.000Z"},
+  {"id":"h2","z5":104,"type":"FTE","status":"Decision needed","text":"0.5 FTE for wet-family containment so the dry investigation is not blocking.","by":"K. Baars","at":"2026-09-21T09:00:00.000Z"},
+  {"id":"h3","z5":126,"type":"Tool time","status":"Approved","decided":"2026-09-23","text":"Two cell B slots per week for vibration measurement.","by":"K. Baars","at":"2026-09-18T09:00:00.000Z"},
+  {"id":"h4","z5":160,"type":"External","status":"Awaiting quote","text":"Supplier analysis of the reticle batch.","by":"P. Sandu","at":"2026-09-25T09:00:00.000Z"}
+]

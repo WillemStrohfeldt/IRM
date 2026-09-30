@@ -1,0 +1,94 @@
+{
+  "currentUser": "M. Devries",
+  "board": {
+    "widgets": [
+      {
+        "id": "kpis",
+        "show": true,
+        "size": "full"
+      },
+      {
+        "id": "stages",
+        "show": true,
+        "size": "half"
+      },
+      {
+        "id": "trend",
+        "show": true,
+        "size": "half"
+      },
+      {
+        "id": "failure",
+        "show": true,
+        "size": "full"
+      },
+      {
+        "id": "buildup",
+        "show": true,
+        "size": "half"
+      },
+      {
+        "id": "attention",
+        "show": true,
+        "size": "half"
+      },
+      {
+        "id": "top",
+        "show": true,
+        "size": "full"
+      },
+      {
+        "id": "followups",
+        "show": true,
+        "size": "half"
+      },
+      {
+        "id": "linking",
+        "show": true,
+        "size": "half"
+      },
+      {
+        "id": "teams",
+        "show": true,
+        "size": "full"
+      },
+      {
+        "id": "digest",
+        "show": true,
+        "size": "full"
+      }
+    ],
+    "products": [],
+    "failureCodes": [],
+    "targets": {
+      "open": 40,
+      "follow": 0,
+      "avail": 0,
+      "noeng": 5,
+      "ws": 4
+    },
+    "trend": {
+      "gran": "week",
+      "metric": "impact",
+      "norm": "abs",
+      "ma": 10
+    },
+    "failure": {
+      "scope": "open",
+      "max": 8
+    },
+    "buildup": {
+      "mode": "priority"
+    },
+    "top": {
+      "n": 5,
+      "range": "m"
+    },
+    "digest": {
+      "weeks": 4,
+      "moved": 5
+    }
+  },
+  "importMappings": {},
+  "drbChair": "R. Aalders"
+}

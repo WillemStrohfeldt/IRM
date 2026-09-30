@@ -1,0 +1,6 @@
+[
+  {"id":"g1","z5":118,"owner":"M. Devries","due":"2026-10-02","done":false,"text":"Assign an engineering owner before the next session; project lead carries DOE leg three in the meantime.","at":"2026-09-23T09:00:00.000Z"},
+  {"id":"g2","z5":145,"owner":"K. Baars","due":"2026-10-01","done":false,"text":"Triage to conclude this session. If accepted, commit an availability date at the same time.","at":"2026-09-23T09:00:00.000Z"},
+  {"id":"g3","z5":104,"owner":"J. Meijer","due":"2026-10-06","done":false,"text":"Split containment per product so the wet family is not held by the dry investigation.","at":"2026-09-23T09:00:00.000Z"},
+  {"id":"g4","z5":126,"owner":"S. Oyelaran","due":"2026-10-01","done":false,"text":"Bring a written DOE plan with slot booking, not a verbal update.","at":"2026-09-23T09:00:00.000Z"}
+]
