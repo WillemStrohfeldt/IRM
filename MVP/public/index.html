@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IRM Cockpit</title>
+<link rel="stylesheet" href="css/industry.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<div class="shell">
+  <div class="brand">
+    <span class="brand-name">IRM Cockpit</span>
+    <span class="brand-sub">Issue resolution · MVP</span>
+  </div>
+  <header class="topbar">
+    <label class="topsearch">
+      <svg viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="global-q" placeholder="Search Z3s and Z5s — number, text, product, owner…  ( / )" autocomplete="off">
+    </label>
+    <button id="new-z5" class="btn top-btn top-btn-accent" type="button" title="Start a Z5 before SAP has a number for it; match it to the SAP number later">+ Provisional Z5</button>
+    <button id="whoami" class="whoami" type="button" title="Change who is working in this browser"></button>
+  </header>
+  <nav id="nav" class="sidenav">
+    <a href="#/board" data-nav="board">KPI board</a>
+    <a href="#/drb" data-nav="drb">DRB</a>
+    <a href="#/teams" data-nav="teams">Teams</a>
+    <a href="#/z5" data-nav="z5">Z5 overview</a>
+    <a href="#/link" data-nav="link">Linking <span id="nav-unlinked" class="nav-count"></span></a>
+    <a href="#/z3" data-nav="z3">Z3 register</a>
+    <a href="#/search" data-nav="search">Search</a>
+    <span class="nav-sep"></span>
+    <a href="#/data" data-nav="data">Data &amp; settings</a>
+  </nav>
+  <main id="main"></main>
+</div>
+<datalist id="people"></datalist>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

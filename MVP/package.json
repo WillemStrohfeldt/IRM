@@ -1,0 +1,13 @@
+{
+  "name": "irm-mvp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "IRM Z3 → Z5 issue resolution MVP — local server, JSON store, file uploads",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

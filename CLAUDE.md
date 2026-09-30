@@ -79,6 +79,10 @@ fills. Primary button is the one solid accent object. Load `styles.css` AND
   **2c** search-first register (filters as nav + linking workspace).
 - `IRM - Z5 Issue Resolution.dc.html` — earlier hi-fi mockup (frozen).
 - `IRM - Z5 Issue Resolution - Brand palette.dc.html` — current mockup, brand palette, interactive.
+- `MVP/` — working MVP/POC built from the brand-palette mockup (started 2026-09-30). Node server with no
+  dependencies (`cd MVP && npm start` → http://127.0.0.1:4310). Data = folder of readable JSON tables
+  (`MVP/data/`, `dataDir` in config; `lib/storage.js`), uploads in `MVP/storage/<Z5-n|Z5-P-n|Z3-n>/`.
+  Vanilla ES-module front end in `MVP/public/`. See `MVP/README.md` and `MVP/docs/data-model.md`.
 
 ## Current direction for the mockup
 
@@ -97,8 +101,38 @@ One app with working left-nav screen switching, combining:
   performance strip per Z5 (update given / workstream closed / follow-up missed / due this
   week), plus team metrics: committed Z5s, on-time update rate, overdue now, past availability.
 
+## MVP phase (current)
+
+User asked for an MVP/POC that goes beyond clicking through: enter their own Z3s/Z5s (forms + CSV import),
+save uploaded files to a chosen location, and demo real functionality. Screens built: KPI board, Z5 overview,
+Z5 detail, linking, Z3 register/detail, search, data & settings, plus DRB and Teams (added 2026-09-30).
+Z5 detail tabs match the mockup: Resolution · Working notes · Triage record · Linked Z3s · Child Z5s.
+KPI board (2026-09-30): all mockup charts, computed live, as configurable widgets (show/hide, order, width,
+per-chart options, product/failure-code filter, KPI targets) stored in `settings.board`; move rate (parts/week)
+in `db.moveRate`, editable in Data & settings. Demo seed adds 2 years of closed history for the trends.
+
+## Data & SAP decisions (2026-09-30)
+
+- MVP moves to another device; data will sit on a secure internal network drive. Multiple users via browser,
+  one server = single writer (lock file). Local files for now; IT may provide a database later (swap `lib/storage.js`).
+  Node availability on the target device is still unconfirmed (portable Node or packaged exe as fallback).
+- **SAP is master for Z3s** (read + re-import): number, name, failure code, product type, serial number, impact,
+  created on (`found`), resolved on (`resolved`), production step, milestone, long text, resolution text, and the
+  Z5 number (SAP links Z3→Z5). Only the IRM status is app-owned; a SAP resolution date sets it to Closed.
+- **SAP exports cover the last month and are appended** (upsert, never delete; no "missing" flagging). Re-imports
+  and overlapping periods are harmless; the preview warns on an identical file (content hash).
+- **SAP is semi-master for Z5s**: number, name, failure code (category of predefined failure types), priority.
+  All work-package management (owners, dates, PCCSIM, updates, DRB, teams) is app-owned; imports never touch it.
+- Z5s can be started in the app as **provisional** (`P-001`, stored from 9e14) and matched to the SAP number later.
+- Z3s cannot be created/deleted in the app; only the IRM status is editable.
+- **Demo login** (2026-09-30): `admin/admin` (R. Aalders, sees all) and `user/user` (S. Oyelaran, K. Baars' team:
+  no KPI board, Teams only own team, no settings/imports/resets). Accounts in `data/users.json`; signed cookie
+  `irm_session`; admin-only enforced server-side. The logged-in name is recorded on all changes.
+- Working notes have comments (`z5-comments.json`). Demo seed has narrative PCCSIM entries and notes per Z5.
+
 ## Still open / to confirm with the user
 
+- Real SAP export header names (importer maps by alias; mapping is adjustable and remembered).
 - Real failure-code list and naming convention for products.
 - Real production-step and milestone vocabulary.
 - Z5 metadata beyond the fields listed above.
