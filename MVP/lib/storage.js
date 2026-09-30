@@ -159,7 +159,9 @@ class TableStore {
     if (fs.existsSync(this.lockFile) && !force) {
       let owner = {};
       try { owner = JSON.parse(fs.readFileSync(this.lockFile, 'utf8')); } catch {}
-      const sameHost = owner.host === os.hostname();
+      // macOS reports a network-dependent suffix (.local, .fritz.box, …) — compare the machine name only
+      const shortHost = (h) => String(h || '').split('.')[0].toLowerCase();
+      const sameHost = shortHost(owner.host) === shortHost(os.hostname());
       let alive = false;
       if (sameHost && owner.pid) { try { process.kill(owner.pid, 0); alive = true; } catch {} }
       if (!sameHost || alive) {
@@ -170,7 +172,7 @@ class TableStore {
     fs.writeFileSync(this.lockFile, JSON.stringify({ host: os.hostname(), pid: process.pid, since: new Date().toISOString() }, null, 2));
     const release = () => { try { const o = JSON.parse(fs.readFileSync(this.lockFile, 'utf8')); if (o.pid === process.pid) fs.unlinkSync(this.lockFile); } catch {} };
     process.on('exit', release);
-    for (const sig of ['SIGINT', 'SIGTERM']) process.on(sig, () => { release(); process.exit(0); });
+    for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP']) process.on(sig, () => { release(); process.exit(0); });
   }
 
   load() {
