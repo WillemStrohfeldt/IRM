@@ -81,8 +81,8 @@
       "mode": "priority"
     },
     "top": {
-      "n": 5,
-      "range": "m"
+      "n": 6,
+      "range": "w"
     },
     "digest": {
       "weeks": 4,
